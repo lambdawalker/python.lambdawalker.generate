@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lambdawalker-generate"
+version = "0.1.0"
+description = "Synthetic data and field generators for LambdaWalker"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+  { name = "LambdaWalker", email = "lambdawalker@isdavid.com" }
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "lambdawalker-random>=0.1.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/lambdawalker/python_lw_drawing_tools"
+Repository = "https://github.com/lambdawalker/python_lw_drawing_tools"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"lambdawalker.generate" = ["assets/**"]
