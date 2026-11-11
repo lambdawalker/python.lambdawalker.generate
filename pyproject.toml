@@ -25,9 +25,39 @@ Homepage = "https://github.com/lambdawalker/python.lambdawalker.generate"
 Repository = "https://github.com/lambdawalker/python.lambdawalker.generate"
 Issues = "https://github.com/lambdawalker/python.lambdawalker.generate/issues"
 
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.8.0",
+    "bandit[toml]>=1.7.9",
+    "pip-audit>=2.7.0",
+]
+
 [tool.uv.build-backend]
 module-name = "lambdawalker.generate"
 namespace = true
 
 [tool.uv.sources]
 lambdawalker-random = { git = "ssh://git@github.com/lambdawalker/python.lambdawalker.random.git" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra -q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "S", "UP"]
+ignore = ["E501", "S311"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv", "build", "dist"]
+skips = ["B311"]
